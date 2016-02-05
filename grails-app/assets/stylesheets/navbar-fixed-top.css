@@ -1,0 +1,23 @@
+@font-face {
+			    font-family: Quark;
+			    font-style: normal;
+  				font-weight: 400;
+			    src: url('fonts/Quark-Light.otf');    
+
+			}
+
+@font-face {
+			    font-family: Quark;
+			    font-style: normal;
+  				font-weight: 700;
+			    src: url('fonts/Quark-Bold.otf'); 
+			    
+
+			}
+
+body {
+		/*font-size: 1.6em;*/
+	 	/*font-family: Quark;*/
+  		padding-top: 50px;
+}
+
