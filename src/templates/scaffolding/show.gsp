@@ -55,7 +55,7 @@
 			<g:form class="form-horizontal" url="[resource:${propertyName}, action:'delete']" method="DELETE">
 				<div class="form-group panel-footer">
 					<div class="col-sm-offset-2 col-sm-10">
-					<g:actionSubmit class="edit btn btn-default" action="edit" value="\${message(code: 'default.button.edit.label', default: 'Edit')}"/>
+					<g:link class="edit btn btn-default" action="edit" resource="\${${propertyName}}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
 					<g:actionSubmit class="save btn btn-danger" action="delete" value="\${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('\${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
 				</div>
 			</g:form>
