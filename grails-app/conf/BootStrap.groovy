@@ -1,12 +1,9 @@
 import grails.util.Environment
 
 class BootStrap {	
-	def fixtureLoader
-	def customMarshallerRegistrar
+	def fixtureLoader	
 
     def init = { servletContext ->
-
-    	customMarshallerRegistrar.registerMarshallers()
     	
     	Environment.current.executeForCurrentEnvironment {
 			development {

@@ -1,5 +1,7 @@
 import box.CustomMarshallerRegistrar
 
 beans = {
-	customMarshallerRegistrar(CustomMarshallerRegistrar)
+	customMarshallerRegistrar(CustomMarshallerRegistrar){
+		grailsApplication = ref('grailsApplication')
+	}
 }
