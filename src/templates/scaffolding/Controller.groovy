@@ -7,10 +7,19 @@ import grails.transaction.Transactional
 class ${className}Controller {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+    private def search(){  
+        ${className}.createCriteria().list(params){      
+            if(params.filter){
+                def filter = params.filter
+                //criteria
+            }
+        }
+    }
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond ${className}.list(params), model:[${propertyName}Count: ${className}.count()]
+        def results = search()
+        respond results, model:[${propertyName}Count: results.getTotalCount()]
     }
 
     def show(${className} ${propertyName}) {
