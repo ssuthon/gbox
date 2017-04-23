@@ -5,14 +5,14 @@ import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
 class ${className}Controller {
-
+    
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
     private def search(){  
         ${className}.createCriteria().list(params){      
-            if(params.filter){
-                def filter = params.filter
-                //criteria
-            }
+            /*if(params.f_title){
+                like 'title', "%\${params.f_title}%"
+            }*/
+            //jodaLocalDateConverter.convert (for date), use DateTime for datetime
         }
     }
 

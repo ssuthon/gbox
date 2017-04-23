@@ -21,7 +21,32 @@
 				<g:if test="\${flash.message}">
 					<div class="alert alert-info" role="alert">\${flash.message}</div>
 				</g:if>
-				<hr>
+				<br/>
+				<!--div class="panel panel-default">					
+					<div class="panel-heading">
+						<h4 class="panel-title">
+							<g:message code="default.filter.label" default="Filter"/>						
+						</h4>
+
+					</div>
+				 	<div class="panel-body">
+				 		<g:form class="form" action="index" method="get">
+				 			<div class="row">
+
+				 				<div class="col-sm-2">
+				 						<input type="text" class="form-control" name="f_title" placeholder="\${message(code: '${domainClass.propertyName}.title.label', default: 'Title')}"
+				 						value="\${params.f_title}">
+				 				</div>
+
+				 				<div class="col-sm-1">
+				 					<button class="btn btn-default" type="submit">
+											<span class="glyphicon glyphicon-search"></span>
+									</button>
+				 				</div>
+				 			</div>				 			
+				 		</g:form>
+					</div>
+				</div-->
 				<table class="table table-hover">
 				<thead>
 						<tr>
@@ -49,6 +74,8 @@
 							<td><g:formatBoolean boolean="\${${propertyName}.${p.name}}" /></td>
 						<%          } else if (p.type == Date || p.type == java.sql.Date || p.type == java.sql.Time || p.type == Calendar) { %>
 							<td><g:formatDate date="\${${propertyName}.${p.name}}" /></td>
+						<%          } else if (p.type == org.joda.time.LocalDate || p.type == org.joda.time.LocalDateTime) { %>
+							<td><joda:format value="\${${propertyName}.${p.name}}"/></td>
 						<%          } else { %>
 							<td>\${fieldValue(bean: ${propertyName}, field: "${p.name}")}</td>
 						<%  }   }   } %>
@@ -57,7 +84,7 @@
 					</tbody>
 				</table>
 				<div class="pull-right" style="margin: 0;">
-					<g:paginate total="\${${propertyName}Count ?: 0}" />
+					<g:paginate total="\${${propertyName}Count ?: 0}" params="\${params.findAll{ k, v-> k.startsWith('f_') }}"/>
 				</div>
 			</div>
 		 

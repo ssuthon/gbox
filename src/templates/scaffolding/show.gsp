@@ -45,6 +45,8 @@
 						<div class="col-sm-4"><p class="form-control-static"><g:formatBoolean boolean="\${${propertyName}?.${p.name}}" /></p></div>
 					<%  } else if (p.type == Date || p.type == java.sql.Date || p.type == java.sql.Time || p.type == Calendar) { %>
 						<div class="col-sm-4"><p class="form-control-static"><g:formatDate date="\${${propertyName}?.${p.name}}" /></p></div>
+					<%  } else if (p.type == org.joda.time.LocalDate || p.type == org.joda.time.LocalDateTime) { %>
+						<div class="col-sm-4"><p class="form-control-static"><joda:format value="\${${propertyName}.${p.name}}"/></p></div>
 					<%  } else if (!p.type.isArray()) { %>
 						<div class="col-sm-4"><p class="form-control-static"><g:fieldValue bean="\${${propertyName}}" field="${p.name}"/></p></div>
 					<%  } %>
